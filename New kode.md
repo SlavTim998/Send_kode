@@ -1,22 +1,18 @@
 # copy code
 ```python
-import bisect
+def find_kth_non_divisible(wer1, wer2):
+    wer3, wer4 = wer2, wer2 + wer1
+    while wer3 < wer4:
+        wer5 = (wer3 + wer4) // 2
+        if wer5 - wer5 // wer1 >= wer2:
+            wer4 = wer5
+        else:
+            wer3 = wer5 + 1
+    return wer3
 
-n = int(input())
-a = list(map(int, input().split()))
-m = int(input())
-q = list(map(int, input().split()))
+wer6 = int(input())
+for wer7 in range(wer6):
+    wer8, wer9 = map(int, input().split())
+    print(find_kth_non_divisible(wer8, wer9))
 
-# Создаём префиксные суммы
-prefix = []
-current_sum = 0
-for x in a:
-    current_sum += x
-    prefix.append(current_sum)
-
-# Для каждого номера червя находим кучку
-for worm_num in q:
-    # Бинарный поиск позиции, где worm_num <= prefix[i]
-    index = bisect.bisect_left(prefix, worm_num)
-    print(index + 1)  # +1, так как нумерация кучек с 1
 ```
